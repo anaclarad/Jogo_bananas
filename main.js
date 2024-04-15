@@ -19,7 +19,7 @@ window.onload = function () {
     background.x = background.y = 0;
     background.image = game.assets["bg.png"];
 
-    // Adicione isto no início do seu código, após a criação do jogo
+    
     var scoreLabel = new Label();
     scoreLabel.x = 10; // Posição x do contador na tela
     scoreLabel.y = 5; // Posição y do contador na tela
@@ -50,7 +50,7 @@ window.onload = function () {
       }
     });
 
-    // Atualize o texto do contador a cada quadro
+   
     game.rootScene.addEventListener("enterframe", function () {
       scoreLabel.text = "Score: " + game.score;
     });
@@ -87,8 +87,7 @@ function addBanana() {
   bomba.addEventListener("enterframe", function (e) {
     if (this.intersect(bear)) {
       game.rootScene.removeChild(this);
-      game.score--; // Reduz a pontuação quando a bomba toca o personagem
-    } else {
+      game.score--; 
       this.y += 3;
     }
   });
@@ -153,30 +152,30 @@ function rand(num) {
 }
 
 function victory() {
-  // Crie um novo sprite para a imagem
+  
   var winImage = new enchant.Sprite();
 
-  // Defina a imagem do sprite para a imagem PNG
+ 
   winImage.image = game.assets["win.png"];
 
-  // Ajuste a largura e a altura do sprite
+ 
   winImage.x = 22;
   winImage.y = 15;
-  winImage.width = 250; // Ajuste para a largura desejada
-  winImage.height = 250; // Ajuste para a altura desejada
+  winImage.width = 250; // Ajuste para a largura
+  winImage.height = 250; // Ajuste para a altura 
 
-  // Crie uma nova cena de vitória
+  
   var victoryScene = new enchant.nineleap.SplashScene();
 
-  // Adicione o sprite à cena
+  
   victoryScene.addChild(winImage);
 
-  // Adicione um ouvinte de evento para a cena de vitória
+  
   victoryScene.addEventListener("touchend", function () {
-    // Quando a cena de vitória é tocada, volte para a cena inicial
+    
     game.replaceScene(game.startScene);
   });
 
-  // Substitua a cena atual pela cena de vitória
+  
   game.replaceScene(victoryScene);
 }
